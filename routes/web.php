@@ -19,7 +19,7 @@ use App\Http\Controllers\EmployeeController;
 Route::get('/', function () {
     return view('auth/login');
 });
-route::get('/anjay', function(){
+route::get('/tes', function(){
     return redirect()->route('hello', ['hello'=>'cuy']);
 });
 
@@ -33,3 +33,5 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
