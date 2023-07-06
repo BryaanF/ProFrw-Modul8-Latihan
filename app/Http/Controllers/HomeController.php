@@ -4,19 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\anjay;
-
 class HomeController extends Controller
 {
-    function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-    $pageTitle = 'Home';
-    return view('home', ['pageTitle' => $pageTitle]);
+        $this->middleware('auth');
     }
 
-    function hello(String $value){
-        $name = anjay::find($value);
-        return "This is hello world from home, Hi ".$name->name." welcome!";
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
     }
-
 }

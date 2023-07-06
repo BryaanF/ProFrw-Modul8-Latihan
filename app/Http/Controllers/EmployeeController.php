@@ -13,12 +13,17 @@ use App\Models\Position;
 class EmployeeController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        if(session('status')){
+
             $pageTitle = 'Employee List';
         // ELOQUENT
         $employees = Employee::all();
@@ -26,9 +31,7 @@ class EmployeeController extends Controller
         'pageTitle' => $pageTitle,
         'employees' => $employees
         ]);
-        } else {
-            return view(route('login'));
-        }
+
 
 
     }
